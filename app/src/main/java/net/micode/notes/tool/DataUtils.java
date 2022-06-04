@@ -49,7 +49,7 @@ public class DataUtils {
 
         ArrayList<ContentProviderOperation> operationList = new ArrayList<ContentProviderOperation>();
         for (long id : ids) {
-            if(id == Notes.ID_ROOT_FOLDER) {
+            if(id == Notes.ID_ROOT_FOLDER || id == Notes.ID_PRIVATE_FOLDER || id == Notes.ID_BIN_FOLDER) {
                 Log.e(TAG, "Don't delete system folder root");
                 continue;
             }
