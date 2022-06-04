@@ -601,7 +601,7 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
     }
 
     private void deleteFolder(long folderId) {
-        if (folderId == Notes.ID_ROOT_FOLDER) {
+        if (folderId == Notes.ID_ROOT_FOLDER || folderId == Notes.ID_BIN_FOLDER ||folderId == Notes.ID_PRIVATE_FOLDER) {
             Log.e(TAG, "Wrong folder id, should not happen " + folderId);
             return;
         }
@@ -803,7 +803,7 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
 
     private final OnCreateContextMenuListener mFolderOnCreateContextMenuListener = new OnCreateContextMenuListener() {
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
-            if (mFocusNoteDataItem != null) {
+            if (mFocusNoteDataItem != null && mFocusNoteDataItem.getId() != Notes.ID_BIN_FOLDER && mFocusNoteDataItem.getId() != Notes.ID_PRIVATE_FOLDER) {
                 menu.setHeaderTitle(mFocusNoteDataItem.getSnippet());
                 menu.add(0, MENU_FOLDER_VIEW, 0, R.string.menu_folder_view);
                 menu.add(0, MENU_FOLDER_DELETE, 0, R.string.menu_folder_delete);
@@ -822,7 +822,7 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        if (mFocusNoteDataItem == null) {
+        if (mFocusNoteDataItem == null || mFocusNoteDataItem.getId()== Notes.ID_BIN_FOLDER || mFocusNoteDataItem.getId() == Notes.ID_PRIVATE_FOLDER) {
             Log.e(TAG, "The long click data item is null");
             return false;
         }
