@@ -569,7 +569,7 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
         new AsyncTask<Void, Void, HashSet<AppWidgetAttribute>>() {
             protected HashSet<AppWidgetAttribute> doInBackground(Void... unused) {
                 HashSet<AppWidgetAttribute> widgets = mNotesListAdapter.getSelectedWidget();
-                if (mFocusNoteDataItem.getParentId() == Notes.ID_BIN_FOLDER) {
+                if (mFocusNoteDataItem.getParentId() == Notes.ID_BIN_FOLDER || mFocusNoteDataItem.getParentId() == Notes.ID_PRIVATE_FOLDER) {
                     System.out.println("3333333333333333");
                     if (DataUtils.batchDeleteNotes(mContentResolver, mNotesListAdapter
                             .getSelectedItemIds())) {
