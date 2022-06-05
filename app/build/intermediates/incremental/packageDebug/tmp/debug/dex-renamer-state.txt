@@ -1,4 +1,4 @@
-#Sat Jun 04 19:37:03 CST 2022
-base.0=D\:\\android\\MiNotes2\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+#Sun Jun 05 16:42:51 CST 2022
+base.0=D\:\\A_Mark\\Android\\Notes1\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

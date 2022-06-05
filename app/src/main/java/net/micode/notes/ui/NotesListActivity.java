@@ -89,6 +89,8 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
 
     private static final int MENU_FOLDER_CHANGE_NAME = 2;
 
+    private static final int MENU_FOLDER_RECOVERY = 3;
+
     private static final String PREFERENCE_ADD_INTRODUCTION = "net.micode.notes.introduction";
 
     private enum ListEditState {
@@ -422,8 +424,7 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
                                              mNotesListAdapter.getSelectedCount()));
                     builder.setPositiveButton(android.R.string.ok,
                                              new DialogInterface.OnClickListener() {
-                                                 public void onClick(DialogInterface dialog,
-                                                         int which) {
+                                                 public void onClick(DialogInterface dialog, int which) {
                                                      batchDelete();
                                                  }
                                              });
@@ -567,18 +568,17 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
         new AsyncTask<Void, Void, HashSet<AppWidgetAttribute>>() {
             protected HashSet<AppWidgetAttribute> doInBackground(Void... unused) {
                 HashSet<AppWidgetAttribute> widgets = mNotesListAdapter.getSelectedWidget();
-                if (!isSyncMode()) {
-                    // if not synced, delete notes directly
+                if (mFocusNoteDataItem.getParentId() == Notes.ID_BIN_FOLDER) {
+                    System.out.println("3333333333333333");
                     if (DataUtils.batchDeleteNotes(mContentResolver, mNotesListAdapter
                             .getSelectedItemIds())) {
                     } else {
                         Log.e(TAG, "Delete notes error, should not happens");
                     }
                 } else {
-                    // in sync mode, we'll move the deleted note into the trash
-                    // folder
+                    System.out.println("44444444444444444");
                     if (!DataUtils.batchMoveToFolder(mContentResolver, mNotesListAdapter
-                            .getSelectedItemIds(), Notes.ID_TRASH_FOLER)) {
+                            .getSelectedItemIds(), Notes.ID_BIN_FOLDER)) {
                         Log.e(TAG, "Move notes to trash folder error, should not happens");
                     }
                 }
@@ -600,7 +600,7 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
         }.execute();
     }
 
-    private void deleteFolder(long folderId) {
+    private void deleteFolder(long folderId, long parentID) {
         if (folderId == Notes.ID_ROOT_FOLDER || folderId == Notes.ID_BIN_FOLDER ||folderId == Notes.ID_PRIVATE_FOLDER) {
             Log.e(TAG, "Wrong folder id, should not happen " + folderId);
             return;
@@ -610,12 +610,16 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
         ids.add(folderId);
         HashSet<AppWidgetAttribute> widgets = DataUtils.getFolderNoteWidget(mContentResolver,
                 folderId);
-        if (!isSyncMode()) {
+
+        if (parentID != Notes.ID_BIN_FOLDER) {
             // if not synced, delete folder directly
-            DataUtils.batchDeleteNotes(mContentResolver, ids);
+//            DataUtils.batchDeleteNotes(mContentResolver, ids);
+            DataUtils.batchMoveToFolder(mContentResolver, ids, Notes.ID_BIN_FOLDER);
+            System.out.println(">>> To BIN");
         } else {
             // in sync mode, we'll move the deleted folder into the trash folder
-            DataUtils.batchMoveToFolder(mContentResolver, ids, Notes.ID_TRASH_FOLER);
+            DataUtils.batchDeleteNotes(mContentResolver, ids);
+            System.out.println(">>> Delete");
         }
         if (widgets != null) {
             for (AppWidgetAttribute widget : widgets) {
@@ -637,7 +641,7 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
     private void openFolder(NoteItemData data) {
         mCurrentFolderId = data.getId();
         startAsyncNotesListQuery();
-        if (data.getId() == Notes.ID_CALL_RECORD_FOLDER) {
+        if (data.getId() == Notes.ID_BIN_FOLDER) {
             mState = ListEditState.CALL_RECORD_FOLDER;
             mAddNewNote.setVisibility(View.GONE);
         } else {
@@ -804,10 +808,18 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
     private final OnCreateContextMenuListener mFolderOnCreateContextMenuListener = new OnCreateContextMenuListener() {
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
             if (mFocusNoteDataItem != null && mFocusNoteDataItem.getId() != Notes.ID_BIN_FOLDER && mFocusNoteDataItem.getId() != Notes.ID_PRIVATE_FOLDER) {
-                menu.setHeaderTitle(mFocusNoteDataItem.getSnippet());
-                menu.add(0, MENU_FOLDER_VIEW, 0, R.string.menu_folder_view);
-                menu.add(0, MENU_FOLDER_DELETE, 0, R.string.menu_folder_delete);
-                menu.add(0, MENU_FOLDER_CHANGE_NAME, 0, R.string.menu_folder_change_name);
+                if(mFocusNoteDataItem.getParentId() != Notes.ID_BIN_FOLDER){
+                    menu.setHeaderTitle(mFocusNoteDataItem.getSnippet());
+                    menu.add(0, MENU_FOLDER_VIEW, 0, R.string.menu_folder_view);
+                    menu.add(0, MENU_FOLDER_DELETE, 0, R.string.menu_folder_delete);
+                    menu.add(0, MENU_FOLDER_CHANGE_NAME, 0, R.string.menu_folder_change_name);
+                }
+                else{
+                    menu.setHeaderTitle(mFocusNoteDataItem.getSnippet());
+                    menu.add(0, MENU_FOLDER_VIEW, 0, R.string.menu_folder_view);
+                    menu.add(0, MENU_FOLDER_DELETE, 0, R.string.menu_folder_delete);
+                    menu.add(0, MENU_FOLDER_RECOVERY, 0, R.string.menu_folder_recovery);
+                }
             }
         }
     };
@@ -826,31 +838,64 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
             Log.e(TAG, "The long click data item is null");
             return false;
         }
-        switch (item.getItemId()) {
-            case MENU_FOLDER_VIEW:
-                openFolder(mFocusNoteDataItem);
-                System.out.println(">>> "+mFocusNoteDataItem.getId());
-                break;
-            case MENU_FOLDER_DELETE:
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle(getString(R.string.alert_title_delete));
-                builder.setIcon(android.R.drawable.ic_dialog_alert);
-                builder.setMessage(getString(R.string.alert_message_delete_folder));
-                builder.setPositiveButton(android.R.string.ok,
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                deleteFolder(mFocusNoteDataItem.getId());
-                            }
-                        });
-                builder.setNegativeButton(android.R.string.cancel, null);
-                builder.show();
-                break;
-            case MENU_FOLDER_CHANGE_NAME:
-                showCreateOrModifyFolderDialog(false);
-                break;
-            default:
-                break;
+        if(mFocusNoteDataItem.getParentId() != Notes.ID_BIN_FOLDER){
+            switch (item.getItemId()) {
+                case MENU_FOLDER_VIEW:
+                    openFolder(mFocusNoteDataItem);
+                    System.out.println(">>> "+mFocusNoteDataItem.getId());
+                    break;
+                case MENU_FOLDER_DELETE:
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setTitle(getString(R.string.alert_title_delete));
+                    builder.setIcon(android.R.drawable.ic_dialog_alert);
+                    builder.setMessage(getString(R.string.alert_message_delete_folder));
+                    builder.setPositiveButton(android.R.string.ok,
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    deleteFolder(mFocusNoteDataItem.getId(), mFocusNoteDataItem.getParentId());
+                                }
+                            });
+                    builder.setNegativeButton(android.R.string.cancel, null);
+                    builder.show();
+                    break;
+                case MENU_FOLDER_CHANGE_NAME:
+                    showCreateOrModifyFolderDialog(false);
+                    break;
+                default:
+                    break;
+            }
+        }else{
+            switch (item.getItemId()) {
+                case MENU_FOLDER_VIEW:
+                    openFolder(mFocusNoteDataItem);
+                    System.out.println(">>> "+mFocusNoteDataItem.getId());
+                    break;
+                case MENU_FOLDER_DELETE:
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setTitle(getString(R.string.alert_title_delete));
+                    builder.setIcon(android.R.drawable.ic_dialog_alert);
+                    builder.setMessage(getString(R.string.alert_message_delete_folder));
+                    builder.setPositiveButton(android.R.string.ok,
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    deleteFolder(mFocusNoteDataItem.getId(), mFocusNoteDataItem.getParentId());
+                                }
+                            });
+                    builder.setNegativeButton(android.R.string.cancel, null);
+                    builder.show();
+                    break;
+                case MENU_FOLDER_RECOVERY:
+                    System.out.println("5555555555555555");
+                    HashSet<Long> ids = new HashSet<Long>();
+                    ids.add(mFocusNoteDataItem.getId());
+                    DataUtils.batchMoveToFolder(mContentResolver, ids, Notes.ID_ROOT_FOLDER);
+//                    showCreateOrModifyFolderDialog(false);
+                    break;
+                default:
+                    break;
+            }
         }
+
 
         return true;
     }
