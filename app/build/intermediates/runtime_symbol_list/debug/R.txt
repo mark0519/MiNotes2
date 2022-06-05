@@ -114,6 +114,7 @@ int id menu_font_size 0x7f050024
 int id menu_list_mode 0x7f050025
 int id menu_new_folder 0x7f050026
 int id menu_new_note 0x7f050027
+int id menu_reset_passwd 0x7f050043
 int id menu_search 0x7f050028
 int id menu_send_to_desktop 0x7f050029
 int id menu_setting 0x7f05002a
@@ -144,7 +145,9 @@ int id widget_text 0x7f050042
 int layout account_dialog_title 0x7f060000
 int layout add_account_text 0x7f060001
 int layout datetime_picker 0x7f060002
+int layout dialog_edit_passwd 0x7f06000e
 int layout dialog_edit_text 0x7f060003
+int layout dialog_reset_passwd 0x7f06000f
 int layout folder_list_item 0x7f060004
 int layout note_edit 0x7f060005
 int layout note_edit_list_item 0x7f060006
@@ -194,6 +197,7 @@ int string format_exported_file_location 0x7f0a001a
 int string format_folder_files_count 0x7f0a001b
 int string format_move_notes_to_folder 0x7f0a001c
 int string hint_foler_name 0x7f0a001d
+int string hint_passwd 0x7f0a0066
 int string info_note_enter_desktop 0x7f0a001e
 int string menu_alert 0x7f0a001f
 int string menu_create_folder 0x7f0a0020
@@ -213,6 +217,7 @@ int string menu_move 0x7f0a002d
 int string menu_move_parent_folder 0x7f0a002e
 int string menu_normal_mode 0x7f0a002f
 int string menu_remove_remind 0x7f0a0030
+int string menu_reset_passwd 0x7f0a0067
 int string menu_search 0x7f0a0031
 int string menu_select_all 0x7f0a0032
 int string menu_select_none 0x7f0a0033

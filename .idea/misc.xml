@@ -27,6 +27,20 @@
         <entry key="..\:/A_Mark/Android/Notes1/app/src/main/res/menu/sub_folder.xml" value="0.24947916666666667" />
         <entry key="..\:/A_Mark/Android/Notes1/app/src/main/res/xml/preferences.xml" value="0.1" />
         <entry key="..\:/Android/SDK/platforms/android-31/data/res/layout-car/car_alert_dialog_button_bar.xml" value="0.24947916666666667" />
+        <entry key="..\:/android/MiNotes2/app/src/main/res/layout/dialog_edit_passwd.xml" value="0.26268115942028986" />
+        <entry key="..\:/android/MiNotes2/app/src/main/res/layout/dialog_edit_text.xml" value="0.3026041666666667" />
+        <entry key="..\:/android/MiNotes2/app/src/main/res/layout/dialog_reset_passwd.xml" value="0.26268115942028986" />
+        <entry key="..\:/android/MiNotes2/app/src/main/res/layout/note_item.xml" value="0.26268115942028986" />
+        <entry key="..\:/android/MiNotes2/app/src/main/res/layout/note_list.xml" value="0.26268115942028986" />
+        <entry key="..\:/android/MiNotes2/app/src/main/res/layout/widget_2x.xml" value="0.26268115942028986" />
+        <entry key="..\:/android/MiNotes2/app/src/main/res/layout/widget_4x.xml" value="0.26268115942028986" />
+        <entry key="..\:/android/MiNotes2/app/src/main/res/menu/call_note_edit.xml" value="0.3026041666666667" />
+        <entry key="..\:/android/MiNotes2/app/src/main/res/menu/call_record_folder.xml" value="0.3026041666666667" />
+        <entry key="..\:/android/MiNotes2/app/src/main/res/menu/note_edit.xml" value="0.3026041666666667" />
+        <entry key="..\:/android/MiNotes2/app/src/main/res/menu/note_list.xml" value="0.3026041666666667" />
+        <entry key="..\:/android/MiNotes2/app/src/main/res/menu/note_list_dropdown.xml" value="0.3026041666666667" />
+        <entry key="..\:/android/MiNotes2/app/src/main/res/menu/note_list_options.xml" value="0.1" />
+        <entry key="..\:/android/MiNotes2/app/src/main/res/menu/sub_folder.xml" value="0.33" />
       </map>
     </option>
   </component>
