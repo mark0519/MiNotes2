@@ -141,6 +141,7 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.note_list);
+
         initResources();
 
         /**
@@ -149,6 +150,9 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
         setAppInfoFromRawRes();
 
         addPrivateAndBinFolder();
+
+        mState = ListEditState.NOTE_LIST;
+//        onBackPressed();
 
     }
 
@@ -217,9 +221,6 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
 //        if (TextUtils.isEmpty(etName.getText())) {
 //            positive.setEnabled(false);
 //        }
-        /**
-         * When the name edit text is null, disable the positive button
-         */
 //        positive.setEnabled(true);
 //        etName.addTextChangedListener(new TextWatcher() {
 //            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
