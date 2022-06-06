@@ -51,6 +51,7 @@
     <string name="format_folder_files_count">(%d)</string>
     <string name="format_move_notes_to_folder">Have moved selected %1$d notes to %2$s folder</string>
     <string name="hint_foler_name">Input name</string>
+    <string name="hint_passwd">Input passwd</string>
     <string name="info_note_enter_desktop">Note added to home</string>
     <string name="menu_alert">Remind me</string>
     <string name="menu_create_folder">New Folder</string>
@@ -71,6 +72,7 @@
     <string name="menu_move_parent_folder">Parent folder</string>
     <string name="menu_normal_mode">Leave check list</string>
     <string name="menu_remove_remind">Delete reminder</string>
+    <string name="menu_reset_passwd">Reset Password</string>
     <string name="menu_search">Search</string>
     <string name="menu_select_all">Select all</string>
     <string name="menu_select_none">Nothing selected, the operation is invalid</string>

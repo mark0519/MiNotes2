@@ -29,6 +29,7 @@ import android.util.Log;
 import net.micode.notes.data.Notes;
 import net.micode.notes.data.Notes.CallNote;
 import net.micode.notes.data.Notes.NoteColumns;
+import net.micode.notes.ui.NotesListActivity;
 import net.micode.notes.ui.NotesListAdapter.AppWidgetAttribute;
 
 import java.util.ArrayList;
@@ -86,7 +87,11 @@ public class DataUtils {
             Log.d(TAG, "the ids is null");
             return true;
         }
-
+        if (folderId == Notes.ID_PRIVATE_FOLDER && NotesListActivity.passwdVerifyState == 0){
+//            NotesListActivity.passwdVerify();
+            System.out.println("private");
+        }
+        
         ArrayList<ContentProviderOperation> operationList = new ArrayList<ContentProviderOperation>();
         for (long id : ids) {
             ContentProviderOperation.Builder builder = ContentProviderOperation

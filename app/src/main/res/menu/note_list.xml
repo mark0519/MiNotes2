@@ -34,6 +34,10 @@
         android:title="@string/menu_setting" />
 
     <item
+        android:id="@+id/menu_reset_passwd"
+        android:title="@string/menu_reset_passwd" />
+
+    <item
         android:id="@+id/menu_search"
         android:title="@string/menu_search"/>
 </menu>

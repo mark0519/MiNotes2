@@ -97,7 +97,16 @@ net/micode/notes/ui/NotesListActivity.java
  net.micode.notes.ui.NotesListActivity$1
  net.micode.notes.ui.NotesListActivity$10
  net.micode.notes.ui.NotesListActivity$11
+ net.micode.notes.ui.NotesListActivity$12
+ net.micode.notes.ui.NotesListActivity$13
+ net.micode.notes.ui.NotesListActivity$14
+ net.micode.notes.ui.NotesListActivity$15
+ net.micode.notes.ui.NotesListActivity$16
+ net.micode.notes.ui.NotesListActivity$17
+ net.micode.notes.ui.NotesListActivity$18
+ net.micode.notes.ui.NotesListActivity$19
  net.micode.notes.ui.NotesListActivity$2
+ net.micode.notes.ui.NotesListActivity$20
  net.micode.notes.ui.NotesListActivity$3
  net.micode.notes.ui.NotesListActivity$4
  net.micode.notes.ui.NotesListActivity$5
