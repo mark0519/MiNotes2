@@ -41,6 +41,7 @@
     <string name="menu_export_text">導出文本</string>
     <string name="menu_sync">同步</string>
     <string name="menu_sync_cancel">取消同步</string>
+    <string name="menu_reset_passwd">重置密碼</string>
     <string name="menu_setting">設置</string>
     <string name="menu_search">搜尋</string>
     <string name="menu_delete">刪除</string>
@@ -113,6 +114,7 @@
     <string name="button_delete">刪除</string>
     <string name="call_record_folder_name">通話便籤</string>
     <string name="hint_foler_name">請輸入名稱</string>
+    <string name="hint_passwd">請輸入密碼</string>
 
     <string name="search_label">正在搜索便籤</string>
     <string name="search_hint">搜索便籤</string>

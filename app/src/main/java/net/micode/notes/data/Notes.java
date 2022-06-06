@@ -37,6 +37,7 @@ public class Notes {
     public static final int ID_PRIVATE_FOLDER = 2;
     public static final int ID_BIN_FOLDER = 3;
 
+    public static String PRIVATE_PASSWD = "";
     public static final String INTENT_EXTRA_ALERT_DATE = "net.micode.notes.alert_date";
     public static final String INTENT_EXTRA_BACKGROUND_ID = "net.micode.notes.background_color_id";
     public static final String INTENT_EXTRA_WIDGET_ID = "net.micode.notes.widget_id";

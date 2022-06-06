@@ -44,6 +44,7 @@
     <string name="menu_export_text">Export text</string>
     <string name="menu_sync">Sync</string>
     <string name="menu_sync_cancel">Cancel syncing</string>
+    <string name="menu_reset_passwd">Reset Password</string>
     <string name="menu_setting">Settings</string>
     <string name="menu_search">Search</string>
     <string name="menu_delete">Delete</string>
@@ -119,6 +120,7 @@
     <string name="button_delete">Delete</string>
     <string name="call_record_folder_name">Call notes</string>
     <string name="hint_foler_name">Input name</string>
+    <string name="hint_passwd">Input passwd</string>
 
     <string name="search_label">Searching Notes</string>
     <string name="search_hint">Search notes</string>

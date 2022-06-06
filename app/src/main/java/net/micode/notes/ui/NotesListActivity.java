@@ -73,9 +73,15 @@ import net.micode.notes.widget.NoteWidgetProvider_2x;
 import net.micode.notes.widget.NoteWidgetProvider_4x;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashSet;
 
 public class NotesListActivity extends Activity implements OnClickListener, OnItemLongClickListener {
@@ -120,6 +126,8 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
     private ModeCallback mModeCallBack;
 
     private static final String TAG = "NotesListActivity";
+
+    public static int passwdVerifyState = 0;
 
     public static final int NOTES_LISTVIEW_SCROLL_RATE = 30;
 
@@ -300,6 +308,18 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
     @Override
     protected void onStart() {
         super.onStart();
+        String path = "/data/data/net.micode.notes/passwd";
+        try {
+            FileInputStream fis = new FileInputStream(path);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
+            String text = reader.readLine();
+            if(!TextUtils.isEmpty(text)){
+                Notes.PRIVATE_PASSWD=text;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        passwdVerifyState = 0;
         startAsyncNotesListQuery();
     }
 
@@ -636,6 +656,11 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
 
     private void openFolder(NoteItemData data) {
         mCurrentFolderId = data.getId();
+        if (data.getId() == Notes.ID_PRIVATE_FOLDER && passwdVerifyState == 0){
+            passwdVerify();
+            System.out.println("private");
+            return;
+        }
         startAsyncNotesListQuery();
         if (data.getId() == Notes.ID_CALL_RECORD_FOLDER) {
             mState = ListEditState.CALL_RECORD_FOLDER;
@@ -760,6 +785,7 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
 
     @Override
     public void onBackPressed() {
+        System.out.println(mState);
         switch (mState) {
             case SUB_FOLDER:
                 mCurrentFolderId = Notes.ID_ROOT_FOLDER;
@@ -904,6 +930,10 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
                 createNewNote();
                 break;
             }
+            case R.id.menu_reset_passwd:{
+                resetPasswd();
+                break;
+            }
             case R.id.menu_search:
                 onSearchRequested();
                 break;
@@ -1045,5 +1075,225 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
             }
         }
         return false;
+    }
+
+    public void passwdCreate(){
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View view = LayoutInflater.from(this).inflate(R.layout.dialog_edit_passwd, null);
+        final EditText etName = (EditText) view.findViewById(R.id.et_foler_name);
+        showSoftInput();
+        etName.setText("");
+        builder.setTitle("Password Create\nIt cannot be changed but reset");
+        builder.setPositiveButton(android.R.string.ok, null);
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                hideSoftInput(etName);
+            }
+        });
+        final Dialog dialog = builder.setView(view).show();
+        final Button positive = (Button)dialog.findViewById(android.R.id.button1);
+        positive.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                hideSoftInput(etName);
+                String passwd = etName.getText().toString();
+                if (!passwd.equals("")){
+                    try {
+                        MessageDigest md = MessageDigest.getInstance("MD5");// 生成一个MD5加密计算摘要
+                        md.update(passwd.getBytes());// 计算md5函数
+                        Notes.PRIVATE_PASSWD = new BigInteger(1, md.digest()).toString(16);// 16是表示转换为16进制数
+                    } catch (NoSuchAlgorithmException e) {
+                        e.printStackTrace();
+                    }
+                    String path = "/data/data/net.micode.notes/passwd";
+                    try {
+                        FileOutputStream fos = new FileOutputStream(path);
+                        String info = Notes.PRIVATE_PASSWD;
+                        fos.write(info.getBytes());
+                        fos.flush();
+                        fos.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    Toast.makeText(NotesListActivity.this, "Password modification successful",
+                            Toast.LENGTH_LONG).show();
+                }
+                else{
+                    Toast.makeText(NotesListActivity.this, "Password cannot be empty",
+                            Toast.LENGTH_LONG).show();
+                }
+
+                dialog.dismiss();
+            }
+        });
+        if (TextUtils.isEmpty(etName.getText())) {
+            positive.setEnabled(false);
+        }
+        /**
+         * When the name edit text is null, disable the positive button
+         */
+        etName.addTextChangedListener(new TextWatcher() {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // TODO Auto-generated method stub
+
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (TextUtils.isEmpty(etName.getText())) {
+                    positive.setEnabled(false);
+                } else {
+                    positive.setEnabled(true);
+                }
+            }
+
+            public void afterTextChanged(Editable s) {
+                // TODO Auto-generated method stub
+
+            }
+        });
+    }
+
+    public void passwdVerify() {
+        if (Notes.PRIVATE_PASSWD.equals("")) {
+            passwdCreate();
+            return;
+        }
+        if(passwdVerifyState == 1){
+            return;
+        }
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View view = LayoutInflater.from(this).inflate(R.layout.dialog_edit_passwd, null);
+        final EditText etName = (EditText) view.findViewById(R.id.et_foler_name);
+        showSoftInput();
+        etName.setText("");
+        builder.setTitle("Password Verify");
+
+        builder.setPositiveButton(android.R.string.ok, null);
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                hideSoftInput(etName);
+            }
+        });
+        final Dialog dialog = builder.setView(view).show();
+        final Button positive = (Button)dialog.findViewById(android.R.id.button1);
+        positive.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                hideSoftInput(etName);
+                String passwd = etName.getText().toString();
+                String temp="";
+                try {
+                    MessageDigest md = MessageDigest.getInstance("MD5");// 生成一个MD5加密计算摘要
+                    md.update(passwd.getBytes());// 计算md5函数
+                    temp = new BigInteger(1, md.digest()).toString(16);// 16是表示转换为16进制数
+                } catch (NoSuchAlgorithmException e) {
+                    e.printStackTrace();
+                }
+                if (!temp.equals(Notes.PRIVATE_PASSWD)) {
+                    Toast.makeText(NotesListActivity.this, "Wrong Password",
+                            Toast.LENGTH_LONG).show();
+                    etName.setSelection(0, etName.length());
+                    return;
+                }
+                else {
+                    passwdVerifyState = 1;
+                    Toast.makeText(NotesListActivity.this, "Authentication Success",
+                            Toast.LENGTH_LONG).show();
+                    etName.setSelection(0, etName.length());
+                }
+                dialog.dismiss();
+            }
+        });
+
+        if (TextUtils.isEmpty(etName.getText())) {
+            positive.setEnabled(false);
+        }
+        /**
+         * When the name edit text is null, disable the positive button
+         */
+        etName.addTextChangedListener(new TextWatcher() {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // TODO Auto-generated method stub
+
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (TextUtils.isEmpty(etName.getText())) {
+                    positive.setEnabled(false);
+                } else {
+                    positive.setEnabled(true);
+                }
+            }
+
+            public void afterTextChanged(Editable s) {
+                // TODO Auto-generated method stub
+
+            }
+        });
+    }
+
+    public void resetPasswd() {
+        if(Notes.PRIVATE_PASSWD.equals("")){
+            Toast.makeText(NotesListActivity.this, "You don't have a password yet",
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
+        else {
+            final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            View view = LayoutInflater.from(this).inflate(R.layout.dialog_reset_passwd, null);
+            final EditText etName = (EditText) view.findViewById(R.id.et_foler_name);
+            showSoftInput();
+            etName.setText("");
+            builder.setTitle("Password Reset\nPrivate notes will be deleted forever");
+
+            builder.setPositiveButton(android.R.string.ok, null);
+            builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    hideSoftInput(etName);
+                }
+            });
+            final Dialog dialog = builder.setView(view).show();
+            final Button positive = (Button)dialog.findViewById(android.R.id.button1);
+            positive.setOnClickListener(new OnClickListener() {
+                public void onClick(View v) {
+                    hideSoftInput(etName);
+                    String passwd = etName.getText().toString();
+                    if (passwd.equals("yes")) {
+                        Notes.PRIVATE_PASSWD = "";
+                        passwdVerifyState = 0;
+                        File file = new File("/data/data/net.micode.notes/passwd");
+                        if (file.exists() && file.isFile()) {
+                            file.delete();
+                        }
+//                        删除私密便签
+                    }
+                    dialog.dismiss();
+                }
+            });
+
+            if (TextUtils.isEmpty(etName.getText())) {
+                positive.setEnabled(false);
+            }
+            /**
+             * When the name edit text is null, disable the positive button
+             */
+            etName.addTextChangedListener(new TextWatcher() {
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    // TODO Auto-generated method stub
+
+                }
+
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    if (TextUtils.isEmpty(etName.getText())) {
+                        positive.setEnabled(false);
+                    } else {
+                        positive.setEnabled(true);
+                    }
+                }
+
+                public void afterTextChanged(Editable s) {
+                    // TODO Auto-generated method stub
+
+                }
+            });
+        }
     }
 }
