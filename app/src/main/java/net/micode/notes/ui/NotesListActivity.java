@@ -73,9 +73,14 @@ import net.micode.notes.widget.NoteWidgetProvider_2x;
 import net.micode.notes.widget.NoteWidgetProvider_4x;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashSet;
 
 public class NotesListActivity extends Activity implements OnClickListener, OnItemLongClickListener {
@@ -121,11 +126,9 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
 
     private ModeCallback mModeCallBack;
 
-<<<<<<< Updated upstream
+
     public static int passwdVerifyState = 0;
 
-=======
->>>>>>> Stashed changes
     private static final String TAG = "NotesListActivity";
 
     public static final int NOTES_LISTVIEW_SCROLL_RATE = 30;
@@ -1097,7 +1100,7 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
         }
         return false;
     }
-<<<<<<< Updated upstream
+
     public void passwdCreate(){
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View view = LayoutInflater.from(this).inflate(R.layout.dialog_edit_passwd, null);
@@ -1317,6 +1320,4 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
             });
         }
     }
-=======
->>>>>>> Stashed changes
 }

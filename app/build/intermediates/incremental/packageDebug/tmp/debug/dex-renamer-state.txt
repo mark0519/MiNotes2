@@ -1,8 +1,0 @@
-<<<<<<< Updated upstream
-#Mon Jun 06 11:45:41 CST 2022
-=======
-#Mon Jun 06 11:21:26 CST 2022
->>>>>>> Stashed changes
-base.0=D\:\\A_Mark\\Android\\Notes1\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
-renamed.0=classes.dex
-path.0=classes.dex
