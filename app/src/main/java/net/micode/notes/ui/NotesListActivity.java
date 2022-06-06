@@ -73,15 +73,9 @@ import net.micode.notes.widget.NoteWidgetProvider_2x;
 import net.micode.notes.widget.NoteWidgetProvider_4x;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.HashSet;
 
 public class NotesListActivity extends Activity implements OnClickListener, OnItemLongClickListener {
@@ -127,8 +121,11 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
 
     private ModeCallback mModeCallBack;
 
+<<<<<<< Updated upstream
     public static int passwdVerifyState = 0;
 
+=======
+>>>>>>> Stashed changes
     private static final String TAG = "NotesListActivity";
 
     public static final int NOTES_LISTVIEW_SCROLL_RATE = 30;
@@ -311,18 +308,6 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
     @Override
     protected void onStart() {
         super.onStart();
-        String path = "/data/data/net.micode.notes/passwd";
-        try {
-            FileInputStream fis = new FileInputStream(path);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
-            String text = reader.readLine();
-            if(!TextUtils.isEmpty(text)){
-                Notes.PRIVATE_PASSWD=text;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        passwdVerifyState = 0;
         startAsyncNotesListQuery();
     }
 
@@ -661,11 +646,6 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
 
     private void openFolder(NoteItemData data) {
         mCurrentFolderId = data.getId();
-        if (data.getId() == Notes.ID_PRIVATE_FOLDER && passwdVerifyState == 0){
-            passwdVerify();
-            System.out.println("private");
-            return;
-        }
         startAsyncNotesListQuery();
         if (data.getId() == Notes.ID_BIN_FOLDER) {
             mState = ListEditState.CALL_RECORD_FOLDER;
@@ -790,7 +770,6 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
 
     @Override
     public void onBackPressed() {
-        System.out.println(mState);
         switch (mState) {
             case SUB_FOLDER:
                 mCurrentFolderId = Notes.ID_ROOT_FOLDER;
@@ -976,10 +955,6 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
                 createNewNote();
                 break;
             }
-            case R.id.menu_reset_passwd:{
-                resetPasswd();
-                break;
-            }
             case R.id.menu_search:
                 onSearchRequested();
                 break;
@@ -1122,6 +1097,7 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
         }
         return false;
     }
+<<<<<<< Updated upstream
     public void passwdCreate(){
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View view = LayoutInflater.from(this).inflate(R.layout.dialog_edit_passwd, null);
@@ -1341,4 +1317,6 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
             });
         }
     }
+=======
+>>>>>>> Stashed changes
 }

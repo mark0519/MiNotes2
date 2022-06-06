@@ -6,6 +6,7 @@ net.micode.notes:style/TextAppearanceMedium = 0x7f0b0005
 net.micode.notes:style/TextAppearanceLarge = 0x7f0b0004
 net.micode.notes:style/NoteTheme = 0x7f0b0003
 net.micode.notes:style/HighlightTextAppearanceSecondary = 0x7f0b0001
+<<<<<<< Updated upstream
 net.micode.notes:string/ticker_syncing = 0x7f0a0066
 net.micode.notes:string/ticker_success = 0x7f0a0065
 net.micode.notes:string/ticker_fail = 0x7f0a0064
@@ -51,6 +52,53 @@ net.micode.notes:string/menu_font_super = 0x7f0a002d
 net.micode.notes:string/menu_font_size = 0x7f0a002b
 net.micode.notes:string/menu_font_normal = 0x7f0a002a
 net.micode.notes:string/menu_font_large = 0x7f0a0029
+=======
+net.micode.notes:string/ticker_syncing = 0x7f0a0065
+net.micode.notes:string/ticker_success = 0x7f0a0064
+net.micode.notes:string/ticker_fail = 0x7f0a0063
+net.micode.notes:string/ticker_cancel = 0x7f0a0062
+net.micode.notes:string/sync_progress_login = 0x7f0a0060
+net.micode.notes:string/success_sdcard_export = 0x7f0a005d
+net.micode.notes:string/set_remind_time_message = 0x7f0a005c
+net.micode.notes:string/search_hint = 0x7f0a0059
+net.micode.notes:string/preferences_toast_success_set_accout = 0x7f0a0057
+net.micode.notes:string/preferences_toast_cannot_change_account = 0x7f0a0056
+net.micode.notes:string/preferences_title = 0x7f0a0055
+net.micode.notes:string/preferences_menu_remove_account = 0x7f0a0054
+net.micode.notes:string/preferences_menu_change_account = 0x7f0a0053
+net.micode.notes:string/preferences_menu_cancel = 0x7f0a0052
+net.micode.notes:string/preferences_last_sync_time_format = 0x7f0a0051
+net.micode.notes:string/preferences_dialog_select_account_tips = 0x7f0a004e
+net.micode.notes:string/preferences_dialog_change_account_warn_msg = 0x7f0a004d
+net.micode.notes:string/preferences_dialog_change_account_title = 0x7f0a004c
+net.micode.notes:string/preferences_button_sync_immediately = 0x7f0a004b
+net.micode.notes:string/preferences_button_sync_cancel = 0x7f0a004a
+net.micode.notes:string/preferences_add_account = 0x7f0a0048
+net.micode.notes:string/preferences_account_title = 0x7f0a0047
+net.micode.notes:string/preferences_account_summary = 0x7f0a0046
+net.micode.notes:string/widget_havenot_content = 0x7f0a0066
+net.micode.notes:string/notelist_string_info = 0x7f0a0045
+net.micode.notes:string/notelist_menu_new = 0x7f0a0044
+net.micode.notes:string/notealert_ok = 0x7f0a0043
+net.micode.notes:string/notealert_enter = 0x7f0a0042
+net.micode.notes:string/note_link_web = 0x7f0a0041
+net.micode.notes:string/sync_progress_init_list = 0x7f0a005f
+net.micode.notes:string/note_link_tel = 0x7f0a0040
+net.micode.notes:string/note_link_email = 0x7f0a003e
+net.micode.notes:string/note_alert_expired = 0x7f0a003d
+net.micode.notes:string/menu_sync = 0x7f0a003a
+net.micode.notes:string/menu_share = 0x7f0a0039
+net.micode.notes:string/menu_setting = 0x7f0a0038
+net.micode.notes:string/menu_select_title = 0x7f0a0036
+net.micode.notes:string/menu_select_none = 0x7f0a0035
+net.micode.notes:string/menu_select_all = 0x7f0a0034
+net.micode.notes:string/menu_reset_passwd = 0x7f0a0032
+net.micode.notes:string/menu_list_mode = 0x7f0a002d
+net.micode.notes:string/menu_font_super = 0x7f0a002c
+net.micode.notes:string/menu_font_size = 0x7f0a002a
+net.micode.notes:string/menu_font_normal = 0x7f0a0029
+net.micode.notes:string/menu_font_large = 0x7f0a0028
+>>>>>>> Stashed changes
 net.micode.notes:string/menu_export_text = 0x7f0a0024
 net.micode.notes:string/menu_create_folder = 0x7f0a0021
 net.micode.notes:string/menu_alert = 0x7f0a0020
@@ -81,12 +129,21 @@ net.micode.notes:layout/dialog_reset_passwd = 0x7f060005
 net.micode.notes:menu/call_note_edit = 0x7f070000
 net.micode.notes:string/app_name = 0x7f0a0004
 net.micode.notes:layout/widget_4x = 0x7f06000f
+<<<<<<< Updated upstream
 net.micode.notes:string/menu_sync_cancel = 0x7f0a003c
 net.micode.notes:string/menu_send_to_desktop = 0x7f0a0038
 net.micode.notes:string/error_sync_internal = 0x7f0a0012
 net.micode.notes:layout/folder_list_item = 0x7f060006
 net.micode.notes:menu/note_edit = 0x7f070002
 net.micode.notes:string/menu_folder_view = 0x7f0a0028
+=======
+net.micode.notes:string/menu_sync_cancel = 0x7f0a003b
+net.micode.notes:string/menu_send_to_desktop = 0x7f0a0037
+net.micode.notes:string/error_sync_internal = 0x7f0a0012
+net.micode.notes:layout/folder_list_item = 0x7f060006
+net.micode.notes:menu/note_edit = 0x7f070002
+net.micode.notes:string/menu_folder_view = 0x7f0a0027
+>>>>>>> Stashed changes
 net.micode.notes:drawable/font_super = 0x7f040014
 net.micode.notes:layout/note_list = 0x7f06000a
 net.micode.notes:id/menu_share = 0x7f05002c
@@ -99,7 +156,11 @@ net.micode.notes:layout/note_edit_list_item = 0x7f060008
 net.micode.notes:layout/datetime_picker = 0x7f060002
 net.micode.notes:style/TextAppearanceSecondaryItem = 0x7f0b0008
 net.micode.notes:layout/account_dialog_title = 0x7f060000
+<<<<<<< Updated upstream
 net.micode.notes:string/preferences_dialog_select_account_title = 0x7f0a0050
+=======
+net.micode.notes:string/preferences_dialog_select_account_title = 0x7f0a004f
+>>>>>>> Stashed changes
 net.micode.notes:drawable/list_green_up = 0x7f040020
 net.micode.notes:layout/add_account_text = 0x7f060001
 net.micode.notes:id/widget_text = 0x7f050043
@@ -142,7 +203,11 @@ net.micode.notes:id/iv_super_select = 0x7f05001b
 net.micode.notes:drawable/widget_2x_white = 0x7f04003b
 net.micode.notes:id/iv_medium_select = 0x7f050019
 net.micode.notes:id/iv_large_select = 0x7f050018
+<<<<<<< Updated upstream
 net.micode.notes:string/sync_progress_syncing = 0x7f0a0062
+=======
+net.micode.notes:string/sync_progress_syncing = 0x7f0a0061
+>>>>>>> Stashed changes
 net.micode.notes:drawable/list_blue_middle = 0x7f040018
 net.micode.notes:drawable/font_normal = 0x7f040011
 net.micode.notes:id/et_edit_text = 0x7f050009
@@ -151,14 +216,22 @@ net.micode.notes:id/iv_bg_red_select = 0x7f050013
 net.micode.notes:drawable/list_blue_up = 0x7f04001a
 net.micode.notes:id/date = 0x7f050007
 net.micode.notes:id/menu_delete_remind = 0x7f050022
+<<<<<<< Updated upstream
 net.micode.notes:string/search = 0x7f0a0059
+=======
+net.micode.notes:string/search = 0x7f0a0058
+>>>>>>> Stashed changes
 net.micode.notes:string/menu_deselect_all = 0x7f0a0023
 net.micode.notes:id/font_size_selector = 0x7f05000b
 net.micode.notes:id/notes_list = 0x7f050036
 net.micode.notes:id/btn_set_bg_color = 0x7f050005
 net.micode.notes:drawable/list_yellow_single = 0x7f04002b
 net.micode.notes:id/amPm = 0x7f050003
+<<<<<<< Updated upstream
 net.micode.notes:string/menu_move = 0x7f0a002f
+=======
+net.micode.notes:string/menu_move = 0x7f0a002e
+>>>>>>> Stashed changes
 net.micode.notes:id/action_select_all = 0x7f050002
 net.micode.notes:drawable/new_note_pressed = 0x7f040031
 net.micode.notes:layout/dialog_edit_text = 0x7f060004
@@ -169,7 +242,11 @@ net.micode.notes:id/ll_font_large = 0x7f05001c
 net.micode.notes:drawable/list_red_single = 0x7f040023
 net.micode.notes:drawable/edit_blue = 0x7f040006
 net.micode.notes:drawable/widget_4x_red = 0x7f04003f
+<<<<<<< Updated upstream
 net.micode.notes:string/note_link_other = 0x7f0a0040
+=======
+net.micode.notes:string/note_link_other = 0x7f0a003f
+>>>>>>> Stashed changes
 net.micode.notes:string/folder_exist = 0x7f0a0017
 net.micode.notes:drawable/widget_2x_green = 0x7f040039
 net.micode.notes:drawable/title_alert = 0x7f040036
@@ -178,7 +255,11 @@ net.micode.notes:drawable/widget_4x_green = 0x7f04003e
 net.micode.notes:string/error_note_empty_for_clock = 0x7f0a000c
 net.micode.notes:drawable/list_white_down = 0x7f040025
 net.micode.notes:drawable/dropdown_icon = 0x7f040005
+<<<<<<< Updated upstream
 net.micode.notes:string/preferences_last_sync_time = 0x7f0a0051
+=======
+net.micode.notes:string/preferences_last_sync_time = 0x7f0a0050
+>>>>>>> Stashed changes
 net.micode.notes:drawable/new_note_normal = 0x7f040030
 net.micode.notes:id/menu_send_to_desktop = 0x7f05002a
 net.micode.notes:string/format_datetime_mdhm = 0x7f0a0019
@@ -212,18 +293,31 @@ net.micode.notes:drawable/list_green_middle = 0x7f04001e
 net.micode.notes:drawable/list_footer_bg = 0x7f04001c
 net.micode.notes:drawable/list_white_single = 0x7f040027
 net.micode.notes:drawable/list_white_up = 0x7f040028
+<<<<<<< Updated upstream
 net.micode.notes:string/menu_remove_remind = 0x7f0a0032
 net.micode.notes:drawable/list_green_down = 0x7f04001d
 net.micode.notes:id/preference_sync_button = 0x7f050038
 net.micode.notes:string/menu_move_parent_folder = 0x7f0a0030
+=======
+net.micode.notes:string/menu_remove_remind = 0x7f0a0031
+net.micode.notes:drawable/list_green_down = 0x7f04001d
+net.micode.notes:id/preference_sync_button = 0x7f050038
+net.micode.notes:string/menu_move_parent_folder = 0x7f0a002f
+>>>>>>> Stashed changes
 net.micode.notes:string/failed_sdcard_export = 0x7f0a0014
 net.micode.notes:id/account_dialog_title = 0x7f050001
 net.micode.notes:layout/widget_2x = 0x7f06000e
 net.micode.notes:id/note_item = 0x7f050034
 net.micode.notes:dimen/text_font_size_super = 0x7f030004
+<<<<<<< Updated upstream
 net.micode.notes:string/preferences_bg_random_appear_title = 0x7f0a004a
 net.micode.notes:string/alert_message_delete_notes = 0x7f0a0002
 net.micode.notes:string/menu_title_select_folder = 0x7f0a003d
+=======
+net.micode.notes:string/preferences_bg_random_appear_title = 0x7f0a0049
+net.micode.notes:string/alert_message_delete_notes = 0x7f0a0002
+net.micode.notes:string/menu_title_select_folder = 0x7f0a003c
+>>>>>>> Stashed changes
 net.micode.notes:string/menu_folder_delete = 0x7f0a0026
 net.micode.notes:drawable/clock = 0x7f040003
 net.micode.notes:id/menu_delete = 0x7f050021
@@ -232,7 +326,11 @@ net.micode.notes:drawable/edit_yellow = 0x7f04000f
 net.micode.notes:drawable/list_blue_single = 0x7f040019
 net.micode.notes:layout/dialog_edit_passwd = 0x7f060003
 net.micode.notes:drawable/list_red_middle = 0x7f040022
+<<<<<<< Updated upstream
 net.micode.notes:string/menu_normal_mode = 0x7f0a0031
+=======
+net.micode.notes:string/menu_normal_mode = 0x7f0a0030
+>>>>>>> Stashed changes
 net.micode.notes:drawable/edit_title_blue = 0x7f040009
 net.micode.notes:string/menu_delete = 0x7f0a0022
 net.micode.notes:drawable/list_background = 0x7f040016
@@ -242,25 +340,41 @@ net.micode.notes:string/menu_folder_recovery = 0x7f0a0027
 net.micode.notes:drawable/search_result = 0x7f040034
 net.micode.notes:string/datetime_dialog_cancel = 0x7f0a0009
 net.micode.notes:id/tv_modified_date = 0x7f05003d
+<<<<<<< Updated upstream
 net.micode.notes:string/menu_font_small = 0x7f0a002c
+=======
+net.micode.notes:string/menu_font_small = 0x7f0a002b
+>>>>>>> Stashed changes
 net.micode.notes:drawable/font_large = 0x7f040010
 net.micode.notes:id/iv_alert_icon = 0x7f05000d
 net.micode.notes:drawable/list_green_single = 0x7f04001f
 net.micode.notes:xml/widget_2x_info = 0x7f0c0002
 net.micode.notes:drawable/edit_white = 0x7f04000e
+<<<<<<< Updated upstream
 net.micode.notes:string/search_label = 0x7f0a005b
+=======
+net.micode.notes:string/search_label = 0x7f0a005a
+>>>>>>> Stashed changes
 net.micode.notes:string/format_exported_file_location = 0x7f0a001a
 net.micode.notes:drawable/menu_move = 0x7f04002e
 net.micode.notes:id/btn_new_note = 0x7f050004
 net.micode.notes:drawable/edit_title_red = 0x7f04000b
 net.micode.notes:style/NoteActionBarStyle = 0x7f0b0002
+<<<<<<< Updated upstream
 net.micode.notes:string/search_setting_description = 0x7f0a005c
+=======
+net.micode.notes:string/search_setting_description = 0x7f0a005b
+>>>>>>> Stashed changes
 net.micode.notes:id/menu_list_mode = 0x7f050025
 net.micode.notes:dimen/text_font_size_medium = 0x7f030001
 net.micode.notes:drawable/note_edit_color_selector_panel = 0x7f040032
 net.micode.notes:drawable/list_folder = 0x7f04001b
 net.micode.notes:id/iv_small_select = 0x7f05001a
+<<<<<<< Updated upstream
 net.micode.notes:string/widget_under_visit_mode = 0x7f0a0068
+=======
+net.micode.notes:string/widget_under_visit_mode = 0x7f0a0067
+>>>>>>> Stashed changes
 net.micode.notes:color/user_query_highlight = 0x7f020002
 net.micode.notes:drawable/edit_red = 0x7f040008
 net.micode.notes:drawable/edit_green = 0x7f040007
@@ -280,9 +394,15 @@ net.micode.notes:id/account_dialog_subtitle = 0x7f050000
 net.micode.notes:drawable/call_record = 0x7f040002
 net.micode.notes:drawable/notification = 0x7f040033
 net.micode.notes:color/secondary_text_dark = 0x7f020001
+<<<<<<< Updated upstream
 net.micode.notes:string/menu_search = 0x7f0a0034
 net.micode.notes:string/alert_title_delete = 0x7f0a0003
 net.micode.notes:string/success_sync_account = 0x7f0a005f
+=======
+net.micode.notes:string/menu_search = 0x7f0a0033
+net.micode.notes:string/alert_title_delete = 0x7f0a0003
+net.micode.notes:string/success_sync_account = 0x7f0a005e
+>>>>>>> Stashed changes
 net.micode.notes:id/iv_bg_white = 0x7f050014
 net.micode.notes:id/note_title = 0x7f050035
 net.micode.notes:style/HighlightTextAppearancePrimary = 0x7f0b0000

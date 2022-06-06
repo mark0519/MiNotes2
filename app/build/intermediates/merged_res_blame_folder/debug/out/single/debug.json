@@ -376,12 +376,21 @@
         "source": "D:\\A_Mark\\Android\\Notes1\\app\\src\\main\\res\\drawable-hdpi\\icon_app.png"
     },
     {
+<<<<<<< Updated upstream
         "merged": "D:\\A_Mark\\Android\\Notes1\\app\\build\\intermediates\\merged_res\\debug\\drawable-hdpi_list_red_up.9.png.flat",
         "source": "D:\\A_Mark\\Android\\Notes1\\app\\src\\main\\res\\drawable-hdpi\\list_red_up.9.png"
     },
     {
         "merged": "D:\\A_Mark\\Android\\Notes1\\app\\build\\intermediates\\merged_res\\debug\\layout_dialog_reset_passwd.xml.flat",
         "source": "D:\\A_Mark\\Android\\Notes1\\app\\src\\main\\res\\layout\\dialog_reset_passwd.xml"
+=======
+        "merged": "D:\\A_Mark\\Android\\Notes1\\app\\build\\intermediates\\merged_res\\debug\\layout_dialog_reset_passwd.xml.flat",
+        "source": "D:\\A_Mark\\Android\\Notes1\\app\\src\\main\\res\\layout\\dialog_reset_passwd.xml"
+    },
+    {
+        "merged": "D:\\A_Mark\\Android\\Notes1\\app\\build\\intermediates\\merged_res\\debug\\drawable-hdpi_list_red_up.9.png.flat",
+        "source": "D:\\A_Mark\\Android\\Notes1\\app\\src\\main\\res\\drawable-hdpi\\list_red_up.9.png"
+>>>>>>> Stashed changes
     },
     {
         "merged": "D:\\A_Mark\\Android\\Notes1\\app\\build\\intermediates\\merged_res\\debug\\drawable-hdpi_widget_4x_blue.png.flat",
