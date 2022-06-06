@@ -74,10 +74,8 @@ import net.micode.notes.widget.NoteWidgetProvider_4x;
 
 import java.io.BufferedReader;
 import java.io.File;
-<<<<<<< HEAD
-=======
 import java.io.FileInputStream;
->>>>>>> parent of 3280606 (合并之后)
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -130,10 +128,6 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
 
     private ModeCallback mModeCallBack;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> parent of 3280606 (合并之后)
     public static int passwdVerifyState = 0;
 
     private static final String TAG = "NotesListActivity";
@@ -1129,10 +1123,7 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
         }
         return false;
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 3280606 (合并之后)
     public void passwdCreate(){
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View view = LayoutInflater.from(this).inflate(R.layout.dialog_edit_passwd, null);

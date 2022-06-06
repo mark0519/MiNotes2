@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
     <string-array name="format_for_exported_note">
-        <item>-%s</item>      
-        <item>--%s</item>     
-        <item>--%s</item>     
-        <item>--%s</item>     
+        <item>-%s</item>      <!-- format_folder_name -->
+        <item>--%s</item>     <!-- format_folder_note_date -->
+        <item>--%s</item>     <!-- format_note_date -->
+        <item>--%s</item>     <!-- format_note_content -->
     </string-array>
     <string-array name="menu_share_ways">
         <item>Messaging</item>
